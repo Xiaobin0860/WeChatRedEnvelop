@@ -1,3 +1,5 @@
+#import <UIKit/UIKit.h>
+
 #pragma mark - Util
 
 @interface WCBizUtil : NSObject

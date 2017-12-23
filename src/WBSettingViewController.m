@@ -55,17 +55,8 @@
     [self.tableViewInfo clearAllSection];
     
     [self addBasicSettingSection];
-    [self addSupportSection];
     
-    CContactMgr *contactMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("CContactMgr")];
-    
-    if ([contactMgr isInContactList:@"gh_6e8bddcdfca3"]) {
-        [self addAdvanceSettingSection];
-    } else {
-        [self addAdvanceLimitSection];
-    }
-    
-    [self addAboutSection];
+    [self addAdvanceSettingSection];
     
     MMTableView *tableView = [self.tableViewInfo getTableView];
     [tableView reloadData];
@@ -192,20 +183,6 @@
     [WBRedEnvelopConfig sharedConfig].revokeEnable = revokeSwitch.on;
 }
 
-#pragma mark - ProLimit
-
-- (void)addAdvanceLimitSection {
-    MMTableViewSectionInfo *sectionInfo = [objc_getClass("MMTableViewSectionInfo") sectionInfoHeader:@"高级功能" Footer:@"关注公众号后开启高级功能"];
-    
-    [sectionInfo addCell:[self createReceiveSelfRedEnvelopLimitCell]];
-    [sectionInfo addCell:[self createQueueLimitCell]];
-    [sectionInfo addCell:[self createBlackListLimitCell]];
-    [sectionInfo addCell:[self createAbortRemokeMessageLimitCell]];
-    [sectionInfo addCell:[self createKeywordFilterLimitCell]];
-    
-    [self.tableViewInfo addSection:sectionInfo];
-}
-
 - (MMTableViewCellInfo *)createReceiveSelfRedEnvelopLimitCell {
     return [objc_getClass("MMTableViewCellInfo") normalCellForTitle:@"抢自己发的红包" rightValue:@"未启用"];
 }
@@ -224,58 +201,6 @@
 
 - (MMTableViewSectionInfo *)createAbortRemokeMessageLimitCell {
     return [objc_getClass("MMTableViewCellInfo") normalCellForTitle:@"消息防撤回" rightValue:@"未启用"];
-}
-
-#pragma mark - About
-- (void)addAboutSection {
-    MMTableViewSectionInfo *sectionInfo = [objc_getClass("MMTableViewSectionInfo") sectionInfoDefaut];
-    
-    [sectionInfo addCell:[self createGithubCell]];
-    [sectionInfo addCell:[self createBlogCell]];
-    
-    [self.tableViewInfo addSection:sectionInfo];
-}
-
-- (MMTableViewCellInfo *)createGithubCell {
-    return [objc_getClass("MMTableViewCellInfo") normalCellForSel:@selector(showGithub) target:self title:@"我的 Github" rightValue: @"★ star" accessoryType:1];
-}
-
-- (MMTableViewCellInfo *)createBlogCell {
-    return [objc_getClass("MMTableViewCellInfo") normalCellForSel:@selector(showBlog) target:self title:@"我的博客" accessoryType:1];
-}
-
-- (void)showGithub {
-    NSURL *gitHubUrl = [NSURL URLWithString:@"https://github.com/buginux/WeChatRedEnvelop"];
-    MMWebViewController *webViewController = [[objc_getClass("MMWebViewController") alloc] initWithURL:gitHubUrl presentModal:NO extraInfo:nil];
-    [self.navigationController PushViewController:webViewController animated:YES];
-}
-
-- (void)showBlog {
-    NSURL *blogUrl = [NSURL URLWithString:@"http://www.swiftyper.com"];
-    MMWebViewController *webViewController = [[objc_getClass("MMWebViewController") alloc] initWithURL:blogUrl presentModal:NO extraInfo:nil];
-    [self.navigationController PushViewController:webViewController animated:YES];
-}
-
-#pragma mark - Support
-- (void)addSupportSection {
-    MMTableViewSectionInfo *sectionInfo = [objc_getClass("MMTableViewSectionInfo") sectionInfoDefaut];
-    
-    [sectionInfo addCell:[self createWeChatPayingCell]];
-    
-    [self.tableViewInfo addSection:sectionInfo];
-}
-
-- (MMTableViewCellInfo *)createWeChatPayingCell {
-    return [objc_getClass("MMTableViewCellInfo") normalCellForSel:@selector(payingToAuthor) target:self title:@"微信打赏" rightValue:@"支持作者开发" accessoryType:1];
-}
-
-- (void)payingToAuthor {
-    [self startLoadingNonBlock];
-    ScanQRCodeLogicController *scanQRCodeLogic = [[objc_getClass("ScanQRCodeLogicController") alloc] initWithViewController:self CodeType:3];
-    scanQRCodeLogic.fromScene = 2;
-    
-    NewQRCodeScanner *qrCodeScanner = [[objc_getClass("NewQRCodeScanner") alloc] initWithDelegate:scanQRCodeLogic CodeType:3];
-    [qrCodeScanner notifyResult:@"https://wx.tenpay.com/f2f?t=AQAAABxXiDaVyoYdR5F1zBNM5jI%3D" type:@"QR_CODE" version:6];
 }
 
 #pragma mark - MultiSelectGroupsViewControllerDelegate
