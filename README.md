@@ -51,12 +51,3 @@
 
 <img src="./ScreenShots/Setting.jpeg" height="568" hspace="20">
 <img src="./ScreenShots/AssistantSetting.jpeg" height="568" hspace="20">
-
-## 支持作者
-
-本项目的所有逆向分析工作，代码编写工作都由本人一人完成。
-
-插件的开发占用了我大量的时间和精力，如果你觉得这个插件对你有帮助（帮你抢到了比之前更多的红包），不妨进行一下小额捐赠，这样我会有更大的动力去完善、优化它。
-
-<img src="./ScreenShots/WechatPay.jpeg" height="300" hspace="20">
-<img src="./ScreenShots/AliPay.jpeg" height="300" hspace="20">
