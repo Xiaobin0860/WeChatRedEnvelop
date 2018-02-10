@@ -46,8 +46,3 @@
 外挂有风险，使用需谨慎。
 
 要使用本插件，请使用者自行承担各种状况，包括但不限于“禁用红包功能”以及“微信封号”。
-
-## 应用截图
-
-<img src="./ScreenShots/Setting.jpeg" height="568" hspace="20">
-<img src="./ScreenShots/AssistantSetting.jpeg" height="568" hspace="20">
