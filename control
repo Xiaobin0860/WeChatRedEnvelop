@@ -1,9 +1,9 @@
-Package: com.swiftyper.wechatredenvelop
-Name: WeChatRedEnvelop
+Package: com.xl.wc
+Name: wc
 Depends: mobilesubstrate
-Version: 1.2.1
+Version: 1.0.0
 Architecture: iphoneos-arm
-Description: 微信抢红包插件
-Maintainer: 请叫我小锅
-Author: 请叫我小锅
+Description: wc
+Maintainer: xl
+Author: xl
 Section: Tweaks

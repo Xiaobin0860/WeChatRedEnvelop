@@ -6,7 +6,7 @@
 //  Copyright © 2017年 swiftyper. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 @class WeChatRedEnvelopParam;
 @interface WBReceiveRedEnvelopOperation : NSOperation

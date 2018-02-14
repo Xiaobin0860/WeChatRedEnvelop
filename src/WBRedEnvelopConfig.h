@@ -15,6 +15,7 @@
 
 @property (assign, nonatomic) BOOL autoReceiveEnable;
 @property (assign, nonatomic) NSInteger delaySeconds;
+@property (assign, nonatomic) BOOL autoReceivePrivateEnable;
 
 /** Pro */
 @property (assign, nonatomic) BOOL receiveSelfRedEnvelop;
