@@ -49,8 +49,10 @@
 }
 
 - (void)main {
-    
-    usleep(arc4random()%(self.delaySeconds*1000000) + 200000);
+    if(self.delaySeconds>0)
+    {
+        usleep(arc4random()%(self.delaySeconds*1000000) + 200000);
+    }
     
     WCRedEnvelopesLogicMgr *logicMgr = [[objc_getClass("MMServiceCenter") defaultCenter] getService:[objc_getClass("WCRedEnvelopesLogicMgr") class]];
     [logicMgr OpenRedEnvelopesRequest:[self.redEnvelopParam toParams]];
